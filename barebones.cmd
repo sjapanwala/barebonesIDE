@@ -83,6 +83,7 @@ if "%linecommand%" == "/dellast" goto dellast
 if "%linecommand%" == "/d" goto dellast
 if "%linecommand%" == "/t" start %filename% &&  goto numberline
 if "%linecommand%" == "/settings" goto settings
+if "%linecommand%" == "/root" goto root
 if "%linecommand%" == "-#" set linecommand=#---LINEBREAK---#
 echo %linecommand%>>%filename%
 goto numberline
@@ -105,8 +106,9 @@ echo  → │ Enter "/clrfile"    to clear the file data
 echo  → │ Enter "/delfile"    to delete current file
 echo  → │ Enter "/applyupdt"  to probe and apply updates
 echo  → │ Enter "-{cmntchar}" to add a break in the line as a comment
-echo  → │ Enter "/dellast"    to remove the last line (can be recursed)
+echo  → │ Enter "/dellast"    to remove the last line (ca   n be recursed)
 echo  → │ Enter "/settings"   to change settings
+echo  → │ Enter "/root"       to plant this file into user/username (to access from terminal)
 echo  → │ --QUICK SHORTCUTS --
 echo  → │ Enter "/d" to delete last
 echo  → │ Enter "/t" to test file
@@ -166,6 +168,9 @@ echo  → │ - DATA SETTINGS
 echo  → │ CodeTag :------: %codetag%
 echo STA│
 goto numberline
+
+:root
+move barebones.cmd C:\users\%username%
 
 :update
 :: - add a process -
